@@ -40,11 +40,11 @@ func main() {
 		36,
 		false,
 	}
-	err := tpl.ExecuteTemplate(os.Stdout,"tpl.gohtml", strt)
+	err := tpl.ExecuteTemplate(os.Stdout,"index.gohtml", strt1)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	err = tpl.ExecuteTemplate(os.Stdout,"index.gohtml", strt1)
+	err = tpl.ExecuteTemplate(os.Stdout,"tpl.gohtml", strt)
 	if err != nil {
 		log.Fatalln(err)
 	}
