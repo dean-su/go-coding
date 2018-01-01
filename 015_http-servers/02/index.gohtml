@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    {{if .Method}}<h4>the request method:{{.Method}}</h4>{{end}}
+    {{if .Host}}<h4>The Request Host:{{.Host}}</h4>{{end}}
+    {{if .ContentLength}}<h4>The request ContentLength: {{.ContentLength}}</h4>{{end}}
+
+    {{if .URL}}<h4>The request URL:</h4>
+        <ul>
+            <li>Scheme: {{.URL.Scheme}}</li>
+            <li>Opaque: {{.URL.Opaque}}</li>
+            <li>Host: {{.URL.Host}}</li>
+            <li>Path: {{.URL.Path}}</li>
+            <li>RawPath: {{.URL.RawPath}}</li>
+            <li>ForceQuery: {{.URL.ForceQuery}}</li>
+            <li>RawQuery: {{.URL.RawQuery}}</li>
+            <li>Fragment: {{.URL.Fragment}}</li>
+        </ul>
+    {{end}}
+
+    {{if .Header}}
+    {{range $k, $v := .Header}}
+        <h4>{{$k}}</h4>
+        <ul>
+        {{range $v}}
+            <li>{{.}}</li>
+        {{end}}
+        </ul>
+    {{end}}
+    {{end}}
+
+    {{if .Submissions}}<h4>variable names(identifiers) and <em>values</em>:</h4>
+    {{range $key, $value := .Submissions}}
+        <h4>{{$key}}</h4>
+        <ul>{{range $value}}
+            <li><em>{{.}}</em></li>
+            {{end}}
+        </ul>
+    {{end}}
+    {{end}}
+</header>
+
+<form action="/" method="POST">
+    <input type="text" name="fname" placeholder="first name" autofocus autocomplete="off">
+    <input type="submit" name="submit-btn" value="onda button">
+</form>
+</body>
+</html>
